@@ -193,6 +193,7 @@ app.post('/admin/updatedoctorappointment', async function(req,res){
     phone:req.body.phone,
     email:req.body.email,
     appointment:req.body.appointment,
+    type:req.body.type,
     visit:req.body.visit,
     date:req.body.date,
     time:req.body.time,
@@ -393,8 +394,8 @@ function handleQuickReply(sender_psid, received_message) {
     userInputs[user_id].visit=visit;
     current_question='q1';
     botQuestions(current_question, sender_psid);
-  }else if(received_message.startsWith("appointmenttype:")){
-    let r_f=received_message.slice(16);
+  }else if(received_message.startsWith("appointment:")){
+    let r_f=received_message.slice(12);
     userInputs[user_id].appointment=r_f;
     showDoctor(sender_psid);
 
@@ -547,7 +548,7 @@ const handlePostback = (sender_psid, received_postback) => {
   console.log('BUTTON PAYLOAD', payload);
   
   if(payload.startsWith("Doctor:")){
-    let appointment=payload.slice(5);
+    let appointment=payload.slice(7);
     console.log("SELECTED Appointment IS: ", appointment);
     userInputs[user_id].doctor=appointment;
     console.log('TEST',userInputs);
