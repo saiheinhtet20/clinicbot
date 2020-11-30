@@ -183,22 +183,25 @@ app.get('/admin/updatedoctorappointment/:doc_id', async function(req,res){
   }
 });
 
-app.post('/admin/updatedoctorappointment/', async function(req,res){
+app.post('/admin/updatedoctorappointment', async function(req,res){
   console.log('REQ:', req.body);
 
-  // const doctorappointmentRef = db.collection('doctorappointments').doc('DC');
-  // const res  = await doctorappointmentRef.update
-    
-  res.send('ok');
-  // const doctorappointmentRef = db.collection('doctorappointments').doc(doc_id);
-  // const doc = await doctorappointmentRef.get();
-  // if (!doc.exists){
-  //   console.log('No such document!');s
-  // }else{
-  //   console.log('Document data:', doc.data());
-  //   let data = doc.data();
-  //   res.render('editdoctorappointments.ejs',{data:data});
-  // }
+  let data={
+    name:req.body.name,
+    phone:req.body.phone,
+    email:req.body.email,
+    appointment:req.body.appointment,
+    visit:req.body.visit,
+    message:req.body.message,
+    status:req.body.status,
+    doc_id:req.body.doc_id,
+    ref:req.body.ref
+  }
+
+  db.collection('doctorappointments').doc(req.body.doc_id)
+  .update(data).then(()=>{
+      res.redirect('/admin/doctorappointments');
+  }).catch((err)=>console.log('ERROR:',error));
 });
 
 /*********************************************
