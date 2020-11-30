@@ -656,29 +656,42 @@ const showDoctor =(sender_psid) => {
         "payload": {
           "template_type": "generic",
           "elements": [{
-            "title": "Olive Doctor",
-            "subtitle": "Bon Appetit",
-            "image_url":"https://i.pinimg.com/236x/f6/15/77/f61577e4eb47fb4f693fe4036b8fa7f6.jpg",                       
+            "title": "Dr.John",
+            "subtitle": "Suitable (2-4 people)",
+            "image_url":"https://s3-eu-west-1.amazonaws.com/intercare-web-public/wysiwyg-uploads%2F1569586526901-doctor.jpg",                       
             "buttons": [
                 {
                   "type": "postback",
-                  "title": "Olive Doctor",
-                  "payload": "Doctor:Olive Doctor",
+                  "title": "Dr.John",
+                  "payload": "Doctor:Dr.John",
                 }
               ],
           },
           {
-            "title": "Classic Olive Doctor",
-            "subtitle": "Bake from Scratch",
-            "image_url":"https://images-eu.ssl-images-amazon.com/images/I/51zOKAleUYL._SY300_QL70_ML2_.jpg",                       
+            "title": "Dr.Rosy",
+            "subtitle": "Suitable (3-6 people)",
+            "image_url":"https://i.dlpng.com/static/png/5855552-female-doctor-transparent-images-png-arts-doctor-png-female-615_550_preview.png",                       
             "buttons": [
                 {
                   "type": "postback",
-                  "title": "Classic Olive Doctor",
-                  "payload": "Doctor:Classic Olive Doctor",
+                  "title": "Dr.Rosy",
+                  "payload": "Doctor:Dr.Rosy",
+                }
+              ],
+          },
+          {
+            "title": "Dr.Philip",
+            "subtitle": "Suitable (4-10 people)",
+            "image_url":"https://image.freepik.com/free-vector/doctor-character-background_1270-84.jpg",                       
+            "buttons": [
+                {
+                  "type": "postback",
+                  "title": "Dr.Philip",
+                  "payload": "Doctor:Dr.Philip",
                 }
               ],
           }
+
           ]
         }
       }
