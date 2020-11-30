@@ -545,9 +545,9 @@ const handlePostback = (sender_psid, received_postback) => {
   console.log('BUTTON PAYLOAD', payload);
   
   if(payload.startsWith("Doctor:")){
-    let appointment=payload.slice(7);
-    console.log("SELECTED Appointment IS: ", appointment);
-    userInputs[user_id].appointment=appointment;
+    let doctor=payload.slice(7);
+    console.log("SELECTED Appointment IS: ", doctor);
+    userInputs[user_id].doctor=doctor;
     console.log('TEST',userInputs);
     firstOrFollowup(sender_psid);
   }
