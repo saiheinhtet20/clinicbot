@@ -530,9 +530,9 @@ const handlePostback = (sender_psid, received_postback) => {
   console.log('BUTTON PAYLOAD', payload);
   
   if(payload.startsWith("Doctor:")){
-    let room_type=payload.slice(5);
-    console.log("SELECTED ROOM IS: ", room_type);
-    userInputs[user_id].room=room_type;
+    let appointment=payload.slice(5);
+    console.log("SELECTED Appointment IS: ", appointment);
+    userInputs[user_id].doctor=appointment;
     console.log('TEST',userInputs);
     firstOrFollowup(sender_psid);
   }
@@ -625,7 +625,7 @@ function webviewTest(sender_psid){
 
 
 /****************
-start room 
+start doctor 
 ****************/
 const appointment =(sender_psid) => {
   let response1 = {"text": "Welcome to Thawdar Win Traditional Clinic"};
@@ -738,7 +738,7 @@ const botQuestions = (current_question,sender_psid) => {
 const confirmOrder = (sender_psid) => {
   console.log('ORDER INFO',userInputs);
    let Summary = "appointment:" + userInputs[user_id].appointment + "\u000A";
-   Summary += "room:" + userInputs[user_id].room + "\u000A";
+   Summary += "doctor:" + userInputs[user_id].doctor + "\u000A";
    Summary += "visit:" + userInputs[user_id].visit + "\u000A";
    Summary += "name:" + userInputs[user_id].name + "\u000A";
    Summary += "phone:" + userInputs[user_id].phone + "\u000A";
@@ -784,7 +784,7 @@ const saveDoctorBooking = async (arg, sender_psid) =>{
     });
   }
 /****************
-end room 
+end doctor 
 ****************/
 
 
