@@ -650,11 +650,11 @@ const appointment =(sender_psid) => {
             {
               "content_type":"text",
               "title":"Doctor",
-              "payload":"appointmenttype:Doctor",              
+              "payload":"appointment:Doctor",              
             },{
               "content_type":"text",
               "title":"Medicine",
-              "payload":"appointmenttype:Medicine",             
+              "payload":"appointment:Medicine",             
             }
     ]
   };
