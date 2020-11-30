@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Doctor Appointments</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h1>Doctor Appointments</h1>
+
+	<table cellspacing="1" cellpadding="5" border="1">
+		<tr>
+			<th>Name</th>
+			<th>Phone</th>
+			<th>Email</th>
+			<th>Appointment Type</th>
+			<th>Room</th>
+			<th>Visit</th>
+			<th>Message</th>
+			<th>Reference</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+
+	<% data.forEach(function(doctorappointment){ %>
+		<tr>
+			<td><%= doctorappointment.name %></td>
+			<td><%= doctorappointment.phone %></td>
+			<td><%= doctorappointment.email %></td>
+			<td><%= doctorappointment.appointment %></td>
+			<td><%= doctorappointment.room %></td>
+			<td><%= doctorappointment.visit %></td>
+			<td><%= doctorappointment.message %></td>
+			<td><%= doctorappointment.ref %></td>
+			<td><%= doctorappointment.status %></td>
+			<td><a href="updatedoctorappointment/<%= doctorappointment.doc_id %>">Edit</a>  | <a href="">Delete</a> </td>
+		</tr>
+	<% }); %>
+
+	</table>
+
+</body>
+</html>
