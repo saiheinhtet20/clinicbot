@@ -643,7 +643,7 @@ function webviewTest(sender_psid){
 start doctor 
 ****************/
 const appointment =(sender_psid) => {
-  let response1 = {"text": "Welcome to Thawdar Win Traditional Clinic"};
+  let response1 = {"text": "Welcome to Thawdar Win Clinic"};
   let response2 = {
     "text": "Please Select Doctor or Medicine",
     "quick_replies":[
