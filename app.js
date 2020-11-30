@@ -193,7 +193,6 @@ app.post('/admin/updatedoctorappointment', async function(req,res){
     phone:req.body.phone,
     email:req.body.email,
     appointment:req.body.appointment,
-    type:req.body.type,
     visit:req.body.visit,
     date:req.body.date,
     time:req.body.time,
