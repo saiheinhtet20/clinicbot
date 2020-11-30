@@ -24,6 +24,8 @@ app.use(body_parser.json());
 app.use(body_parser.urlencoded());
 
 const bot_questions ={
+"q1": "Please enter date (yyyy-mm-dd)",
+"q2": "Please enter time (hh:mm)",
 "q3": "Please enter full name",
 "q4": "Please enter phone",
 "q5": "Please enter email",
@@ -192,6 +194,8 @@ app.post('/admin/updatedoctorappointment', async function(req,res){
     email:req.body.email,
     appointment:req.body.appointment,
     visit:req.body.visit,
+    date:req.body.date,
+    time:req.body.time,
     message:req.body.message,
     status:req.body.status,
     doc_id:req.body.doc_id,
@@ -387,7 +391,7 @@ function handleQuickReply(sender_psid, received_message) {
   if(received_message.startsWith("visit:")){
     let visit=received_message.slice(6);
     userInputs[user_id].visit=visit;
-    current_question='q3';
+    current_question='q1';
     botQuestions(current_question, sender_psid);
   }else if(received_message.startsWith("appointmenttype:")){
     let r_f=received_message.slice(16);
@@ -423,8 +427,18 @@ const handleMessage = (sender_psid, received_message) => {
   //let message;
   let response;
 
-  if(received_message.attachments){
+if(received_message.attachments){
      handleAttachments(sender_psid, received_message.attachments);
+  }else if(current_question == 'q1'){
+    console.log('DATE ENTERED',received_message.text);
+    userInputs[user_id].date=received_message.text;
+    current_question='q2';
+    botQuestions(current_question,sender_psid);
+  }else if(current_question == 'q2'){
+    console.log('TIME ENTERED',received_message.text);
+    userInputs[user_id].time=received_message.text;
+    current_question='q3';
+    botQuestions(current_question,sender_psid);
   }else if(current_question == 'q3'){
     console.log('FULL NAME ENTERED',received_message.text);
     userInputs[user_id].name=received_message.text;
@@ -445,7 +459,7 @@ const handleMessage = (sender_psid, received_message) => {
     userInputs[user_id].message=received_message.text;
     current_question='';
 
-    confirmOrder(sender_psid);
+    confirmAppointment(sender_psid);
   }
 
   else {
@@ -722,7 +736,13 @@ const firstOrFollowup =(sender_psid) => {
 }
 
 const botQuestions = (current_question,sender_psid) => {
-  if(current_question =='q3'){
+  if(current_question =='q1'){
+    let response = {"text": bot_questions.q1};
+  callSend(sender_psid, response);
+  }else if(current_question =='q2'){
+    let response = {"text": bot_questions.q2};
+  callSend(sender_psid, response);
+  }else if(current_question =='q3'){
     let response = {"text": bot_questions.q3};
   callSend(sender_psid, response);
   }else if(current_question =='q4'){
@@ -738,11 +758,13 @@ const botQuestions = (current_question,sender_psid) => {
 
 }
 
-const confirmOrder = (sender_psid) => {
+const confirmAppointment = (sender_psid) => {
   console.log('ORDER INFO',userInputs);
    let Summary = "appointment:" + userInputs[user_id].appointment + "\u000A";
    Summary += "doctor:" + userInputs[user_id].doctor + "\u000A";
    Summary += "visit:" + userInputs[user_id].visit + "\u000A";
+   Summary += "date:" + userInputs[user_id].date + "\u000A";
+   Summary += "time:" + userInputs[user_id].time + "\u000A";
    Summary += "name:" + userInputs[user_id].name + "\u000A";
    Summary += "phone:" + userInputs[user_id].phone + "\u000A";
    Summary += "email:" + userInputs[user_id].email + "\u000A";

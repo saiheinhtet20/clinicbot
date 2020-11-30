@@ -5,7 +5,7 @@
 	<title>Doctor Appointments</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body background="grey">
+<body>
 	<h1>Doctor Appointments</h1>
 
 	<table cellspacing="1" cellpadding="5" border="1">
@@ -16,6 +16,8 @@
 			<th>Appointment Type</th>
 			<th>Room</th>
 			<th>Visit</th>
+			<th>Date</th>
+			<th>Time</th>
 			<th>Message</th>
 			<th>Reference</th>
 			<th>Status</th>
@@ -30,6 +32,8 @@
 			<td><%= doctorappointment.appointment %></td>
 			<td><%= doctorappointment.room %></td>
 			<td><%= doctorappointment.visit %></td>
+			<td><%= doctorappointment.date %></td>
+			<td><%= doctorappointment.time %></td>
 			<td><%= doctorappointment.message %></td>
 			<td><%= doctorappointment.ref %></td>
 			<td><%= doctorappointment.status %></td>
