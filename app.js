@@ -387,7 +387,7 @@ function handleQuickReply(sender_psid, received_message) {
     current_question='q3';
     botQuestions(current_question, sender_psid);
   }else if(received_message.startsWith("appointmenttype:")){
-    let r_f=received_message.slice(12);
+    let r_f=received_message.slice(16);
     userInputs[user_id].appointment=r_f;
     showDoctor(sender_psid);
 
@@ -789,7 +789,7 @@ end doctor
 
 
 const hiReply =(sender_psid) => {
-  let response = {"text": "Hello user, you can make doctor appointment"};
+  let response = {"text": "Hello user, you can make appointment"};
   callSend(sender_psid, response);
 }
 
