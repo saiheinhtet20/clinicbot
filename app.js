@@ -204,7 +204,7 @@ app.post('/admin/updatedoctorappointment', async function(req,res){
 
   db.collection('doctorappointments').doc(req.body.doc_id)
   .update(data).then(()=>{
-      res.redirect('/admin/editdoctorappointments');
+      res.redirect('/admin/doctorappointments');
   }).catch((err)=>console.log('ERROR:',error));
 });
 
